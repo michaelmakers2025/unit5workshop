@@ -34,7 +34,7 @@ class Character:
     # User-facing properties:
     #   name: string
 
-    def __init__(self, name, health, items_list):
+    def __init__(self, name, health, inv):
         # Parameters:
         #   name: string
         #   health: int
@@ -50,12 +50,11 @@ class Character:
         # Parameters:
         #   task: int reperesetning characters health
         # Returns:
-        #   characters health
+        #   characters health in 
         # Side-effects
-        #
         pass # No code here yet
 
-    def add_items(self):
+    def pick_up_items(self):
         # Paramters:
         #    Appends "item" to item list, representing an item
         #    Should inherit from a  class "item".
@@ -65,7 +64,20 @@ class Character:
         #   Throws an exception if no task is set
         pass # No code here yet
 
-    # use item
+    def use_item(self, item, target):
+        #finds item in inventory and uses it and is removed from inventory.
+        #look at items_list
+        # have an effect * always a postive effect to health + *
+        # needs to inheret effect from items class
+        pass
+
+    # def use_attack(self, item, target):
+    #     #finds item in inventory and uses it and is removed from inventory.
+    #     #look at items_list
+    #     # have a target. ie. self or other character
+    #     # have an effect * always an effect to health + or - *
+    #     # needs to inheret effect from items class
+    #     pass
 
     # select item to use and who to use it on
 
@@ -75,7 +87,10 @@ class Items:
     #   name: string
 
     def __init__(self, item_name, item_effect)
-    # paramters
+     self.item = name
+     self.effect = effect
+
+     health = item(healthpotion, -50)
     pass
 
 # use
@@ -91,13 +106,44 @@ _Make a list of examples of how the class will behave in different situations._
 # EXAMPLE
 
 """
+The player is created with a cool name, health and a empty inventory
+"""
+
+def test_character_creation():
+    player1 = Character("Bilbo")
+    assert player1.name == "Bilbo"
+    assert player1.health == 100
+    assert player1.inv == []
+
+
+"""
+The player is created with and health is returned
+"""
+
+def test_character_health():
+    player1 = Character("Bilbo")
+    assert player1.gethealth() == 100
+
+"""
 The player collects an item and it is added to the inventory
 """
-def test_add_item():
+def test_pick_up_item():
     player1 = Character("Stevie")
     potion = Item("Health Potion")
     player1.add_item(potion)
     assert player1.items_list == [potion]
+
+
+"""
+The player collects 2 items and they are added to the inventory
+"""
+def test_pick_up_item():
+    player1 = Character("Stevie")
+    potion = Item("Health Potion")
+    sword = Item("Big sword")
+    player1.pick_up_item(potion)
+    player.pick_up_item(sword)
+    assert len(player1.inv) == 2
 
 
 """
