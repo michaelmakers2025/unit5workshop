@@ -89,7 +89,6 @@ class Items:
     def __init__(self, item_name, item_effect)
      self.item = name
      self.effect = effect
-
      health = item(healthpotion, -50)
     pass
 
@@ -156,7 +155,8 @@ def test_use_item():
     player1.add_item(potion)
     player1.use_item(potion)
 
-    assert player1.items_list == f"{name} inventory is {item_list}"
+    assert player1.items_list == f"{name} inventory is {inv}"
+    assert player1.health == 100
     
 
 """
